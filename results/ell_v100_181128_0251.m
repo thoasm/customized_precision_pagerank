@@ -1,0 +1,88 @@
+% all kernel runtimes averaged over 100 executions (and measured in ns)
+
+data_basicblocks = [
+% read/write double  &  SpMV ELL double  &  norm double  &  inplace conversion 2segment  &  read/write 2segment 32 bit  &  read/write 2segment 64 bit  &  SpMV ELL 2segment 32 bit  &  SpMV ELL 2segment 64 bit  &  norm 2segment 32 bit  &  norm 2segment 64 bit  &  inplace conversion 4segment  &  read/write 4segment 16 bit  &  read/write 4segment 32 bit  &  read/write 4segment 48 bit  &  read/write 4segment 64 bit  &  SpMV ELL 4segment 16 bit  &  SpMV ELL 4segment 32 bit  &  SpMV ELL 4segment 48 bit  &  SpMV ELL 4segment 64 bit  &  norm 4segment 16 bit  &  norm 4segment 32 bit  &  norm 4segment 48 bit  &  norm 4segment 64 bit
+% adaptive
+136826  752934  82498  676243  68681  136449  494085  848751  55249  82330  980346  40520  69811  102607  136938  346645  544947  763166  971535  45825  53852  67939  83831
+% delaunay_n22
+84661  1620867  59141  1989544  43022  84728  1040995  1691132  40307  58696  2200986  25888  43588  63705  84899  754831  1068227  1431120  1801419  34427  40139  50593  58066
+% europe_osm
+1006361  11639435  481795  14063611  499292  1006720  7671000  12448712  275524  483312  16005773  287728  505288  754535  1009736  5745976  8184443  10910086  13763524  230077  273321  378286  483961
+% hugebubbles-00020
+420946  4446908  211826  1676776  209063  420342  3770757  6280969  125352  212272  2511587  121251  211623  315155  421579  3032179  5092658  10076952  13529185  101967  125204  168657  213274
+% rgg_n_2_24_s0
+332865  9979770  172221  13571921  165943  333001  6558444  10171725  102619  172819  14251448  96361  167969  249830  334090  4882569  6717907  8790758  10770219  83255  103899  137893  173906
+% road_usa
+474853  4410872  237071  4729444  236008  474873  2659830  4552305  139435  237672  5669929  136556  239008  356184  476348  1862872  2667995  3576808  4629779  112372  138271  188360  238322
+% stanford
+3529  1155186  25058  1427709  2980  3512  736647  1245833  25332  25227  1480936  2835  3133  3415  3942  543903  952256  1268775  1358422  24828  24876  24970  24758
+];
+data_norms = [
+% double selective-norm  &  double diff-norm  &  2segment 32 bit selective-norm  &  2segment 64 bit selective-norm  &  2segment 32 bit diff-norm  &  2segment 64 bit diff-norm  &  4segment 16 bit selective-norm  &  4segment 32 bit selective-norm  &  4segment 48 bit selective-norm  &  4segment 64 bit selective-norm  &  4segment 16 bit diff-norm  &  4segment 32 bit diff-norm  &  4segment 48 bit diff-norm  &  4segment 64 bit diff-norm
+% adaptive
+25624  143889  25285  25121  82580  143651  25012  24933  24979  24969  55389  83656  115771  149061
+% delaunay_n22
+25042  96880  24856  24730  58616  96326  25190  24779  24716  24613  43807  59736  78391  99065
+% europe_osm
+25031  935006  25049  24994  484653  934625  24884  24842  24866  25243  325651  482860  741941  987516
+% hugebubbles-00020
+25313  401680  25055  25408  213404  401341  24794  24807  24853  24905  134655  213203  315810  420470
+% rgg_n_2_24_s0
+13683  323100  13421  13265  173167  322751  13250  13209  13236  13237  111585  172450  256994  337261
+% road_usa
+24944  451150  24868  24905  238579  451777  24924  24791  24769  24747  152853  237903  357388  476883
+% stanford
+23576  25288  23156  23413  25300  25504  23039  23066  23238  23516  24762  24842  24900  24920
+];
+data_normalization_conversion = [
+% 2segment 32->64 bit  &  2segment in-place conversion  &  4segment 16->32 bit  &  4segment 32->48 bit  &  4segment 48->64 bit  &  4segment in-place conversion
+% adaptive
+219895  676243  125026  172516  220308  980346
+% delaunay_n22
+144667  1989544  86809  115535  145126  2200986
+% europe_osm
+1491955  14063611  781451  1134801  1493679  16005773
+% hugebubbles-00020
+634395  1676776  338792  485274  635848  2511587
+% rgg_n_2_24_s0
+507272  13571921  273815  389001  508019  14251448
+% road_usa
+713466  4729444  379794  545486  715312  5669929
+% stanford
+28273  1427709  27762  27901  27901  1480936
+];
+% all PageRank runtimes averaged over 10 executions (and measured in ns), PageRank executed with damping factor of 8.500000e-01 and an epsilon of 1.000000e-10; Sparse format: ELL
+data_oneiteration = [
+% runtime/iter double  &  runtime/iter 2-segment 32 bit  &  runtime/iter 2-segment 64 bit  &  runtime/iter 4-segment 16 bit  &  runtime/iter 4-segment 32 bit  &  runtime/iter 4-segment 48 bit  &  runtime/iter 4-segment 64 bit
+% adaptive
+910795  598813  895460  394626  448755  893988  629390
+% delaunay_n22
+1741842  1134620  1705136  804091  1137396  1526248  1531980
+% europe_osm
+12672249  8505778  12520398  6149617  8855697  11811868  11773725
+% hugebubbles-00020
+4906891  4168462  4841485  3242446  3382184  10473555  6500498
+% rgg_n_2_24_s0
+10430017  6950538  10265005  5096617  5209694  9182730  9470499
+% road_usa
+4900451  3042765  4838551  2028902  2980724  4002278  4031169
+% stanford
+1213993  788432  1197198  583048  997018  1315205  1227887
+];
+data_pagerank = [
+% total iterations double  &  total runtime PageRank double  &  total iterations 2segment  &  switch point 2segment  &  total runtime 2segment  &  total iterations 4segment  &  switch point 4segment 16->32  &  switch point 4segment 32->48  &  switch point 4segment 48->64  &  total runtime 4segment
+% adaptive
+65  59201710  65  7  57623429  84  1  2  83  75778734
+% delaunay_n22
+64  111477938  64  15  103839912  88  1  22  86  128785930
+% europe_osm
+118  1495325493  118  50  1300737544  119  1  51  116  1277592551
+% hugebubbles-00020
+77  377830641  77  12  371197843  82  1  2  79  839803965
+% rgg_n_2_24_s0
+89  928271592  89  28  841810226  93  1  2  91  867029322
+% road_usa
+117  573352819  117  51  483011228  117  1  51  115  424612838
+% stanford
+118  143251241  118  51  122666888  118  1  51  115  140438423
+];

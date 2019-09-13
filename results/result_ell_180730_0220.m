@@ -1,0 +1,76 @@
+% all kernel runtimes averaged over 100 executions (and measured in ns)
+
+data_basicblocks = [
+% read/write double  &  SpMV ELL double  &  norm double  &  inplace conversion 2segment  &  read/write 2segment 32 bit  &  read/write 2segment 64 bit  &  SpMV ELL 2segment 32 bit  &  SpMV ELL 2segment 64 bit  &  norm 2segment 32 bit  &  norm 2segment 64 bit  &  inplace conversion 4segment  &  read/write 4segment 16 bit  &  read/write 4segment 32 bit  &  read/write 4segment 48 bit  &  read/write 4segment 64 bit  &  SpMV ELL 4segment 16 bit  &  SpMV ELL 4segment 32 bit  &  SpMV ELL 4segment 48 bit  &  SpMV ELL 4segment 64 bit  &  norm 4segment 16 bit  &  norm 4segment 32 bit  &  norm 4segment 48 bit  &  norm 4segment 64 bit
+% adaptive
+202753  950717  123409  1012143  101844  203747  648153  1091898  79440  127208  1036178  67073  105152  156533  212026  497914  797217  1193124  1742306  71025  88446  125225  152302
+% delaunay_n22
+125894  1877500  86642  2236487  63545  126181  1283444  2101332  62622  87115  2287976  42185  65697  97313  131385  1064430  1664447  2373242  3000823  54423  63611  86908  99002
+% europe_osm
+1505719  16216747  737002  19573926  748091  1507783  11767228  18699382  464448  767223  20013334  483692  768900  1154035  1565027  9803848  14899594  21209492  25132118  392481  529731  865616  1155568
+% hugebubbles-00020
+626999  4095346  321919  2511808  312494  629179  3272999  6274504  202248  333451  2569490  202629  321641  481858  653322  2674529  5241937  8964127  11750762  169483  235028  357376  478229
+% rgg_n_2_24_s0
+497392  11261349  260841  13893358  247976  498379  7684020  12771856  162643  268054  14206883  160909  255104  381797  517493  6590763  10243775  14712234  20595224  139534  191715  283863  367410
+% road_usa
+709162  5466764  357828  6376926  353012  710473  3766142  6209908  225922  373983  6521245  228673  363022  544107  737428  3026073  4680374  6517223  7968943  190987  264724  400328  539889
+% Stanford
+4978  1809739  29856  2137975  3763  5030  1620046  2468748  29678  29545  2187696  3775  4198  5071  6053  1292940  1916160  2820366  3156830  29702  29614  29440  29710
+];
+
+data_norms = [
+% double selective-norm  &  double diff-norm  &  2segment 32 bit selective-norm  &  2segment 64 bit selective-norm  &  2segment 32 bit diff-norm  &  2segment 64 bit diff-norm  &  4segment 16 bit selective-norm  &  4segment 32 bit selective-norm  &  4segment 48 bit selective-norm  &  4segment 64 bit selective-norm  &  4segment 16 bit diff-norm  &  4segment 32 bit diff-norm  &  4segment 48 bit diff-norm  &  4segment 64 bit diff-norm
+% adaptive
+56778  215079  47370  55813  123729  226720  43025  47413  51853  56625  95272  167380  233912  303734
+% delaunay_n22
+50361  139153  46190  54566  87276  152799  44210  48148  54719  61551  68701  110141  145152  192600
+% europe_osm
+163409  1415818  147542  256308  767669  1552411  113557  186939  270459  344564  624722  1145791  1876143  2433959
+% hugebubbles-00020
+188926  605215  143122  233807  333915  657564  112209  161347  216151  271332  258344  480177  742053  1004884
+% rgg_n_2_24_s0
+28170  482411  28693  29597  267836  522423  28649  29152  31202  33035  203133  382256  594617  765623
+% road_usa
+254994  679318  190461  292320  374134  739548  152083  207984  271287  337131  294868  538467  859762  1089799
+% Stanford
+28261  29899  28639  28906  29635  29686  28593  28795  28888  29442  29635  29616  30025  30235
+];
+% all PageRank runtimes averaged over 10 executions (and measured in ns), PageRank executed with damping factor of 8.500000e-01 and an epsilon of 1.000000e-10; Sparse format: ELL
+
+data_oneiteration = [
+% runtime/iter double  &  runtime/iter 2-segment 32 bit  &  runtime/iter 2-segment 64 bit  &  runtime/iter 4-segment 16 bit  &  runtime/iter 4-segment 32 bit  &  runtime/iter 4-segment 48 bit  &  runtime/iter 4-segment 64 bit
+% adaptive
+1051132  807901  1065822  644622  888410  1297408  21
+% delaunay_n22
+2008928  1464612  2045074  1257345  1704097  2448922  19
+% europe_osm
+16656363  12872237  16799597  11307874  15402258  21858156  41
+% hugebubbles-00020
+4408344  3827876  4415872  3224932  5476386  9277766  40
+% rgg_n_2_24_s0
+11441689  8163680  11537326  7457383  10356217  14845851  31
+% road_usa
+5934161  4478249  6124998  3667545  5004093  6951681  40
+% Stanford
+1855237  1687164  1873382  1479107  1943236  2844726  36
+];
+
+data_pagerank = [
+% total iterations double  &  total runtime PageRank double  &  total iterations 2segment  &  switch point 2segment  &  total runtime 2segment  &  total iterations 4segment  &  switch point 4segment 16->32  &  switch point 4segment 32->48  &  switch point 4segment 48->64  &  total runtime 4segment
+% adaptive
+60  63067970  60  20  58791012  60  10  30  60  63136807
+% delaunay_n22
+30  60267859  40  20  70193819  40  10  20  40  78593005
+% europe_osm
+120  1998763642  120  50  1819584195  120  10  60  120  2194681345
+% hugebubbles-00020
+70  308584136  70  20  297351226  70  10  30  70  512887858
+% rgg_n_2_24_s0
+110  1258585810  110  50  1100423763  110  10  50  110  1379573881
+% road_usa
+40  237366454  40  20  212065090  50  10  30  50  275791112
+% Stanford
+120  222628518  120  60  213632911  120  10  60  120  282636647
+];
+
+
