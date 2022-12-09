@@ -187,7 +187,8 @@ void EllPageRank<SPLIT_POINTER_TEMPLATES, IndexType>::solve(OriginalPointerType 
     if (!isInit()) {
         return;
     }
-    using BlockSizeList = macros::compile_int_list<blockSize>;
+    // Since CUDA 11.6, the blockSize must be
+    using BlockSizeList = macros::compile_int_list<cnst::blockSize>;
     using ConvergedRWParameterList = macros::compile_int_list<1+1>;
     using ConvergedRParameterList = macros::compile_int_list<1>;
     using TypeArgs = macros::compile_type_list<>;

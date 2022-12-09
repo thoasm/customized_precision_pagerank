@@ -209,7 +209,8 @@ void CsrPageRank<SPLIT_POINTER_TEMPLATES, IndexType>::solve(OriginalPointerType 
         return;
     }
     using intParameterList = macros::compile_int_list<blockSize, threadsPerRow>;
-    using blockSizeParameterList = macros::compile_int_list<blockSize>;
+    // Since CUDA 11.6, the blockSize must be
+    using blockSizeParameterList = macros::compile_int_list<cnst::blockSize>;
     using ConvergedRWParameterList = macros::compile_int_list<1+1>;
     using ConvergedRParameterList = macros::compile_int_list<1>;
     using TypeArgs = macros::compile_type_list<>;
